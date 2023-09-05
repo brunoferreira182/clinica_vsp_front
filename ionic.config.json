@@ -1,0 +1,7 @@
+{
+  "name": "b3dev_clinica_vsp_app_v2",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "vue-vite"
+}
