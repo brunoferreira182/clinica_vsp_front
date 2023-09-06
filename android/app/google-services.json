@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "976125984126",
+    "project_id": "vsp-app-771a6",
+    "storage_bucket": "vsp-app-771a6.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:976125984126:android:291be42b352b2e24a1c72f",
+        "android_client_info": {
+          "package_name": "dermaplanner.vsp.b3dev"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "976125984126-0nu6meg1rhj8i7dk98e6o0m7i8hkmgs5.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCBTfe5jP-E21kFGifL4__NGxblcMzMBrA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "976125984126-0nu6meg1rhj8i7dk98e6o0m7i8hkmgs5.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "976125984126-2os047c3683hpdnblsu0s69q9358veq1.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.dermaplanner.vsp.b3dev"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

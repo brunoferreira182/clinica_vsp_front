@@ -23,9 +23,24 @@ import '@ionic/vue/css/display.css';
 /* Theme variables */
 import './theme/variables.css';
 
+///////////// FONT AWESOME //////////////////
+/* Set up using Vue 3 */
+/* import the fontawesome core */
+import { library } from '@fortawesome/fontawesome-svg-core'
+/* import font awesome icon component */
+import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
+/* import specific icons */
+import { faCreditCard, faBarcode, faHouse, faCartShopping, faMessage, faMap, faCircleNodes, faHandHoldingDollar, faUsers, faCalendar, faHand, faHeadphones, faThumbsUp, faBullhorn, faChildReaching} from '@fortawesome/free-solid-svg-icons'
+import { faHeart,  } from '@fortawesome/free-regular-svg-icons'
+import { faPix } from '@fortawesome/free-brands-svg-icons'
+/* add icons to the library */
+library.add(faBarcode, faHeart, faHouse, faCreditCard, faPix, faCartShopping, faMessage, faMap, faCircleNodes, faHandHoldingDollar, faUsers, faCalendar, faHand, faHeadphones, faThumbsUp, faBullhorn, faChildReaching)
+///////////// FONT AWESOME //////////////////
+
 const app = createApp(App)
-  .use(IonicVue)
-  .use(router);
+  .use(IonicVue, { mode: 'ios' })
+  .use(router)
+  .component('font-awesome-icon', FontAwesomeIcon);
   
 router.isReady().then(() => {
   app.mount('#app');

@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">Dermaplanner VSP</string>
+    <string name="title_activity_main">Dermaplanner VSP</string>
+    <string name="package_name">dermaplanner.vsp.b3dev</string>
+    <string name="custom_url_scheme">dermaplanner.vsp.b3dev</string>
+</resources>
