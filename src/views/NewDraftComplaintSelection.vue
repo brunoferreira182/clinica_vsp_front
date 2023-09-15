@@ -342,7 +342,9 @@ export default {
       this.$refs.body.classList.add('hide')
       this.direction === 'back' ? this.direction = 'front' : this.direction = 'back'
       this.front = !this.front
+      utils.loading.show()
       await this.getBodyParts('body')
+      utils.loading.hide()
       this.checkSelectedComplaints()
     },
     getActiveOpportunitiesFromUser () {
