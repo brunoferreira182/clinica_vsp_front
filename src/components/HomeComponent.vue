@@ -8,6 +8,12 @@
         DermaPlanner<span style="font-size: 11px;"> VSP</span>
       </div>
       <ion-buttons slot="end">
+        <ion-button v-if="userInfo.isGuestUser === 0" @click="$router.push('/NewDraftCompanyBody')" >
+          <ion-icon :icon="iSuitcase" size="large"/>
+        </ion-button>
+        <ion-button v-else-if="userInfo.isGuestUser === 1" @click="$router.push('/guestInfo')" >
+          <ion-icon :icon="iSuitcase" size="large"/>
+        </ion-button>
         <ion-button @click="$router.push('/notifications')" color="secondary">
             <ion-icon :icon="notificationsOutline" size="large"/>
           </ion-button>
@@ -77,7 +83,9 @@
 <script setup>
 import { useFetch } from '../composables/fetch.js';
 import utils from '../composables/utils.js';
+import iSuitcase from '/src/assets/icons/suitcase.svg'
 import CardPost from '../components/CardPost.vue'
+import 'animate.css';
 import {
   IonImg,
   IonCard,
@@ -253,7 +261,6 @@ export default {
 </script>
 
 <style scoped>
-
 .app-name {
   color: var(--ion-color-primary);
   font-family: Noto;

@@ -73,13 +73,13 @@ export default defineComponent({
         { name: "home", icon: iHouse, to: '/tabs/home', label: "INÍCIO" },
         { name: "profile", icon: iUser, to: '/myProfile', label: "PERFIL" },
         { name: "messenger", icon: iChat, to: '/tabs/messengerChat', label: "CONVERSAR" },
-        { name: "newDraft", icon: iSuitcase, to: '/guestInfo', label: "ORÇAMENTO" },
+        // { name: "newDraft", icon: iSuitcase, to: '/guestInfo', label: "ORÇAMENTO" },
       ],
       tabsUser: [
         { name: "home", icon: iHouse, to: '/tabs/home', label: "INÍCIO" },
         { name: "profile", icon: iUser, to: '/myProfile', label: "PERFIL" },
         { name: "messenger", icon: iChat, to: '/tabs/messengerChat', label: "CONVERSAR" },
-        { name: "newDraft", icon: iSuitcase, to: '/NewDraftCompanyBody', label: "ORÇAMENTO" },
+        // { name: "newDraft", icon: iSuitcase, to: '/NewDraftCompanyBody', label: "ORÇAMENTO" },
       ],
       tabs: [],
       selectedTab: 'home'
