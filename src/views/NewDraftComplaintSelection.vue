@@ -81,15 +81,23 @@
         <ion-row class="ion-justify-content-center" >
           <ion-button 
             class="q-mx-md q-mt-sm"
-            style="text-transform: none; translate: 0vw 1vh;z-index:30"
-            shape="round"
-            color="primary"
-            size="small"
-            fill="outline"
+            style="text-transform: none; translate: 0vw -36vh;z-index:30; transform: translateX(-126px);"
+            color="secondary"
+            size="large"
+            fill="clear"
             @click="clkDirection()"
           >
-            Girar
-            <ion-icon slot="start" :icon="sync"></ion-icon>
+            <ion-icon slot="icon-only" :icon="chevronBack"></ion-icon>
+          </ion-button>
+          <ion-button 
+            class="q-mx-md q-mt-sm"
+            style="text-transform: none; translate: 0vw -36vh;z-index:30; transform: translateX(126px);"
+            color="secondary"
+            size="large"
+            fill="clear"
+            @click="clkDirection()"
+          >
+            <ion-icon slot="icon-only" :icon="chevronForward"></ion-icon>
           </ion-button>
         </ion-row>
       </ion-grid>
@@ -244,7 +252,7 @@ import {
 } from '@ionic/vue';
 import { useFetch } from '../composables/fetch'
 import HeaderComponent from '../components/HeaderComponent.vue';
-import { trash, chevronBack,sync } from 'ionicons/icons';
+import { trash, chevronBack,sync, chevronForward } from 'ionicons/icons';
 import utils from '../composables/utils'
 import imgFemaleBack from '/src/assets/bodies/female_back.png'
 import imgFemaleFront from '/src/assets/bodies/female_front.png'
