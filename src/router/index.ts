@@ -16,9 +16,9 @@ const routes: Array<RouteRecordRaw> = [
           { path: '/tabs/home', component: () => import('@/views/Home.vue') },
           { path: '/tabs/messengerChat', component: () => import('@/views/MessengerChat.vue') },
           { path: '/myProfile', component: () => import('@/views/MyProfile.vue') },
-          { path: '/newDraftCompanyBody', component: () => import('@/views/NewDraftCompanyBody.vue') },
         ]
       },
+      { path: '/newDraftCompanyBody', component: () => import('@/views/NewDraftCompanyBody.vue') },
       { path: '/newDraftProcedureSelection', component: () => import('@/views/NewDraftProcedureSelection.vue') },
       { path: '/newDraftComplaintSelection', component: () => import('@/views/NewDraftComplaintSelection.vue') },
       { path: '/newDraftProceduresList', component: () => import('@/views/NewDraftProceduresList.vue') },
