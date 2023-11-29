@@ -1,6 +1,6 @@
 //////////// VARIAVEIS DA APLICACAO //////
 const MODE_MASTER_SERVER = 'dev'
-const COMPANY_ID = 10
+const COMPANY_ID = 2
 const VERSION = 1.5
 const BUILD = 9
 //////////// NAO MUDAR //////
@@ -12,6 +12,7 @@ const CRYPTOYESORNO = 0
 const APP_NAME = 'VSP APP'
 let IUGU_ID
 const IUGU_TEST_MODE = COMPANY_ID > 9 ? false : true
+const MODE_SERVER = 'app'
 ///////////////////////////////////////////
 
 const setIuguId = function (id) {
@@ -35,5 +36,6 @@ export {
   setIuguId,
   getIuguId,
   VERSION,
-  BUILD
+  BUILD,
+  MODE_SERVER
 }

@@ -3,8 +3,8 @@
     <ion-content >
       <div class="q-mx-md">
         
-        <h1>Novo orçamento</h1>
-        <h6 style="padding: 0;color: var(--ion-color-secondary);" class="q-py-md">
+        <HeaderComponent title="Novo orçamento"/>
+        <h6 style="padding: 0;color: var(--ion-color-secondary);" class="q-py-md ion-text-center">
           Selecione o gênero para prosseguir.
         </h6>
         <div

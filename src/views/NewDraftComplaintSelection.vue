@@ -5,7 +5,7 @@
       <h1 class="ion-text-center" style="color: var(--ion-color-secondary); margin-top: -45px;">Novo orçamento</h1>
       <div 
         class="ion-text-center q-ma-md q-mb-lg" style="color: var(--ion-color-primary);"> 
-        Toque em alguma parte do corpo complaint:
+        Toque em alguma parte do corpo:
       </div>
       <div
         class="svg-container"

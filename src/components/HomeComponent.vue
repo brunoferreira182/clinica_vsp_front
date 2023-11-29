@@ -85,7 +85,7 @@ import { useFetch } from '../composables/fetch.js';
 import utils from '../composables/utils.js';
 import iSuitcase from '/src/assets/icons/suitcase.svg'
 import CardPost from '../components/CardPost.vue'
-import 'animate.css';
+// import 'animate.css';
 import {
   IonImg,
   IonCard,

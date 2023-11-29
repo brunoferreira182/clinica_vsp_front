@@ -137,9 +137,10 @@ const useUtils = {
     window.localStorage.setItem('au', id)
   },
   attachmentsAddress () {
-    if (MODE_MASTER_SERVER === 'dev' || MODE_MASTER_SERVER === 'dev_ext' || MODE_MASTER_SERVER === 'prod')
-      return masterServerRoute() + '/static/vsp_app/'
-    else return masterServerRoute('dev_ext') + '/static/vsp_app/'
+    // if (MODE_MASTER_SERVER === 'dev' || MODE_MASTER_SERVER === 'dev_ext' || MODE_MASTER_SERVER === 'prod')
+    //   return masterServerRoute() + '/static/vsp_app/'
+    // else return masterServerRoute('dev_ext') + '/static/vsp_app/'
+    return masterServerRoute() + '/static/'
   },
   getUserInfoByToken () {
     const opt = {
