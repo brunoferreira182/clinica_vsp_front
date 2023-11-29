@@ -9,10 +9,10 @@
       </div>
       <ion-buttons slot="end">
         <ion-button v-if="userInfo.isGuestUser === 0" @click="$router.push('/NewDraftCompanyBody')" >
-          <ion-icon :icon="iSuitcase" size="large"/>
+          <ion-icon :icon="sparklesOutline" size="large" class="iconStyle animate__animated animate__heartBeat animate__infinite"/>
         </ion-button>
         <ion-button v-else-if="userInfo.isGuestUser === 1" @click="$router.push('/guestInfo')" >
-          <ion-icon :icon="iSuitcase" size="large"/>
+          <ion-icon :icon="sparklesOutline" size="large" class="iconStyle animate__animated animate__heartBeat animate__infinite"/>
         </ion-button>
         <ion-button @click="$router.push('/notifications')" color="secondary">
             <ion-icon :icon="notificationsOutline" size="large"/>
@@ -84,8 +84,9 @@
 import { useFetch } from '../composables/fetch.js';
 import utils from '../composables/utils.js';
 import iSuitcase from '/src/assets/icons/suitcase.svg'
+// import sparklesOutline from 'ionicons/icons';
 import CardPost from '../components/CardPost.vue'
-// import 'animate.css';
+import 'animate.css';
 import {
   IonImg,
   IonCard,
@@ -113,7 +114,8 @@ import {
   closeOutline,
   logOutOutline,
   trashOutline,
-  notificationsOutline
+  notificationsOutline,
+  sparklesOutline
 } from 'ionicons/icons';
 import { useBackButton } from '@ionic/vue';
 import { isPlatform } from '@ionic/vue';
@@ -371,6 +373,10 @@ ion-menu {
   background: rgb(255, 252, 246, 0.7);
   backdrop-filter: blur( 16px );
   -webkit-backdrop-filter: blur( 10px)
-
 }
+
+.iconStyle {
+  color:rgb(201, 156, 102);
+}
+
 </style>
