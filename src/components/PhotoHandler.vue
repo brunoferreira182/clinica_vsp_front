@@ -1,6 +1,9 @@
 <template>
   <ion-modal :isOpen="step === 'crop'" style="padding-top: var(--ion-safe-area-top)" id="example-modal">
-    <ion-content>
+    <ion-content class="q-mt-xl">
+      <div class="ion-text-center q-ma-lg">
+        <ion-spinner v-if="!img && !img.webPath"/>
+      </div>
       <cropper
         :src="img.webPath"
         @change="crop"
@@ -27,7 +30,7 @@
       >
         Voltar
       </ion-button>
-      <img hidden id="imgToReference" :src="imgType === 'camera' ? img.webviewPath : img"/>
+      <!-- <img hidden id="imgToReference" :src="imgType === 'camera' ? img.webviewPath : img"/> -->
     </ion-content>
   </ion-modal>
 </template>
@@ -44,10 +47,9 @@ import {
   IonButton,
   actionSheetController,
   IonModal,
-  IonContent
+  IonContent,
+  IonSpinner
 } from '@ionic/vue';
-// import { usePhotoGallery } from '@/composables/usePhotoGallery';
-// const { takePhoto } = usePhotoGallery();
 import { ref, onMounted, watch } from 'vue'
 import { Cropper } from 'vue-advanced-cropper';
 import 'vue-advanced-cropper/dist/style.css';
@@ -206,20 +208,16 @@ function crop({ coordinates, canvas }) {
 }
 
 async function sendPhoto (img) {
-  // utils.loading.show()
   const file = !props.noCrop ? await fetch(imageCropped.value) : await fetch(img.value)
   let fileBlob = await file.blob()
   fileBlob = new Blob([fileBlob], { type: 'image/png' })
   step.value = 'initial'
   const colors = null
-  // const colors = getPredominantColor()
-  // utils.loading.hide()
   emits('captured', file.url, fileBlob, fileName, colors, 'camera')
 }
 
 function clkRestart() {
   step.value = 'initial'
-  // openCamera()
   showBottomSheet()
 }
 
@@ -227,9 +225,6 @@ function clkBack () {
   step.value = 'initial'
   emits('cancel')
 }
-
-
-
 
 const convertBlobToBase64 = (blob) => new Promise((resolve, reject) => {
   const reader = new FileReader();
@@ -239,42 +234,6 @@ const convertBlobToBase64 = (blob) => new Promise((resolve, reject) => {
   };
   reader.readAsDataURL(blob);
 });
-
-function getPredominantColor() {
-  // const imgEl = document.getElementById('imgToReference')
-  // const colorThief = new ColorThief();
-  // let color1 = colorThief.getColor(imgEl,1000);
-  // let primary = color1[0].toString(16) + color1[1].toString(16) + color1[2].toString(16)
-  // function LightenDarkenColor(col,amt) {
-  //   let usePound = false;
-  //   if ( col[0] == "#" ) {
-  //     col = col.slice(1);
-  //     usePound = true;
-  //   }
-  //   let num = parseInt(col,16);
-  //   let r = (num >> 16) + amt;
-  //   if ( r > 255 ) r = 255;
-  //   else if  (r < 0) r = 0;
-  //   let b = ((num >> 8) & 0x00FF) + amt;
-  //   if ( b > 255 ) b = 255;
-  //   else if  (b < 0) b = 0;
-  //   let g = (num & 0x0000FF) + amt;
-  //   if ( g > 255 ) g = 255;
-  //   else if  ( g < 0 ) g = 0;
-  //   return (usePound?"#":"") + (g | (b << 8) | (r << 16)).toString(16);
-  // }
-  // let secondary = LightenDarkenColor(primary, 50)
-  // let colors = {
-  //   primary: '#' + primary,
-  //   secondary: '#' + secondary,
-  // }
-  // return colors
-  return {
-    primary: '#e0e0e0',
-    secondary: '#c7c7c7'
-  }
-}
-
 
 </script>
 

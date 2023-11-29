@@ -152,6 +152,7 @@ export default {
       })
     },
     async sendImage (img, imgBlob) {
+      utils.loading.show()
       this.startPhotoHandler = false
 
       const opt = {
@@ -160,6 +161,7 @@ export default {
         fileTypes: ['camera'],
       }
       useFetch(opt).then(() => {
+        utils.loading.hide()
         this.step = 'initial'
         this.getUserProfileInfo()
       })

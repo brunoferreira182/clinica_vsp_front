@@ -254,6 +254,7 @@ export default {
       this.step = 'initial'
     },
     captured(fileUrl, fileBlob, fileName) {
+      utils.loading.show()
       this.sendFile( fileBlob )
       this.startPhotoHandler = false
     },
@@ -272,7 +273,7 @@ export default {
       }
       this.newImageLoading = true
 			useFetch(opt).then(r => {
-        // utils.loading.hide()
+        utils.loading.hide()
         if(r.error === false) this.getOpportunityDetailById()
       })
     },
