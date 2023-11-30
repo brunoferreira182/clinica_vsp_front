@@ -9,10 +9,10 @@
       </div>
       <ion-buttons slot="end">
         <ion-button v-if="userInfo.isGuestUser === 0" @click="$router.push('/NewDraftCompanyBody')" >
-          <ion-icon :icon="sparklesOutline" size="large" class="iconStyle animate__animated animate__heartBeat animate__infinite"/>
+          <ion-icon :icon="sparklesOutline" size="large" class="iconStyle animate__animated animate__heartBeat animate__repeat-3"/>
         </ion-button>
         <ion-button v-else-if="userInfo.isGuestUser === 1" @click="$router.push('/guestInfo')" >
-          <ion-icon :icon="sparklesOutline" size="large" class="iconStyle animate__animated animate__heartBeat animate__infinite"/>
+          <ion-icon :icon="sparklesOutline" size="large" class="iconStyle animate__animated animate__heartBeat animate__repeat-3"/>
         </ion-button>
         <ion-button @click="$router.push('/notifications')" color="secondary">
             <ion-icon :icon="notificationsOutline" size="large"/>
@@ -84,7 +84,6 @@
 import { useFetch } from '../composables/fetch.js';
 import utils from '../composables/utils.js';
 import iSuitcase from '/src/assets/icons/suitcase.svg'
-// import sparklesOutline from 'ionicons/icons';
 import CardPost from '../components/CardPost.vue'
 import 'animate.css';
 import {
@@ -376,7 +375,7 @@ ion-menu {
 }
 
 .iconStyle {
-  color:rgb(201, 156, 102);
+  color: rgb(233, 163, 77);
 }
 
 </style>
