@@ -9,7 +9,10 @@
       </div>
       <ion-buttons slot="end">
         <ion-button v-if="userInfo.isGuestUser === 0" @click="$router.push('/NewDraftCompanyBody')" >
-          <ion-icon :icon="sparklesOutline" size="large" class="iconStyle "/>
+          <input class="animation-head" id="toggle-heart" type="checkbox" :checked="sparkleButton"/>
+          <label class="toggle-animation q-pa-sm" for="toggle-heart" aria-label="like">
+            <ion-icon :icon="sparklesOutline" size="large" class="iconStyle"/>
+          </label>
         </ion-button>
         <ion-button v-else-if="userInfo.isGuestUser === 1" @click="$router.push('/guestInfo')">
           <input class="animation-head" id="toggle-heart" type="checkbox" :checked="sparkleButton"/>
