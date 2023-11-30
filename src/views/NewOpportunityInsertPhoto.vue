@@ -110,7 +110,12 @@
             </ion-row>
           </div>
         </div>
-
+        <!-- <input
+          type="file"
+          id="file-upload"
+          style="display: 'none'"
+          onChange="changeInputFile"
+        /> -->
 
       </div>
       <div class="q-pa-md q-mt-sm" >
@@ -125,6 +130,7 @@
           Voltar
         </ion-button>
       </div>
+
     </ion-content>
   </ion-page>
 </template>
@@ -192,6 +198,7 @@ export default {
     this.getOpportunityDetailById()
   },
   methods: {
+    
     clkDeleteImg(item){
       const opt = {
         route: '/mobile/sales/deleteOpportunityImage',
@@ -237,17 +244,22 @@ export default {
       return ret
 
     },
+    // changeInputFile (e) {
+      
+    // },
     clkAddAttachment (item) {
       this.procedureData.procedureData = item.procedureData
       this.procedureData.procedureId = item.procedureId
       this.step = 'addAttachment'
       this.startPhotoHandler = !this.startPhotoHandler
+      // document.getElementById("file-upload").click()
     },
     clkAddAttachmentToBodyPart (item, i) {
       console.log(item)
       this.opportunityBodyPartId = item._id
       this.step = 'addAttachment'
       this.startPhotoHandler = !this.startPhotoHandler
+      // document.getElementById("file-upload").click()
     },
     cancelPhotoHandler () {
       this.startPhotoHandler = false

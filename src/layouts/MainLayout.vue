@@ -61,7 +61,7 @@ import iSuitcase from '/src/assets/icons/suitcase.svg'
 
 <script>
 import { useFetch } from '@/composables/fetch';
-// import { defineCustomElements } from '@ionic/pwa-elements/loader'
+
 
 export default defineComponent({
   name: "MainLayout",

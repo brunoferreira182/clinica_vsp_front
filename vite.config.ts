@@ -18,5 +18,5 @@ export default defineConfig({
     globals: true,
     environment: 'jsdom'
   },
-  base: '/dev/vsp_app/app/'
+  // base: '/dev/vsp_app/app/'
 })

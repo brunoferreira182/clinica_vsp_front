@@ -31,8 +31,15 @@
         Voltar
       </ion-button>
       <!-- <img hidden id="imgToReference" :src="imgType === 'camera' ? img.webviewPath : img"/> -->
+      
     </ion-content>
   </ion-modal>
+  <input
+    type="file"
+    id="file-upload"
+    style="display: none"
+    onChange="setImage"
+  />
 </template>
 
 <script>
@@ -70,6 +77,7 @@ const imgType = ref(null)
 const step = ref('initial')
 const stencilProps = {}
 const imageCropped = ref(null)
+let isCordova = true
 
 let fileName = null
 const buttons = [
@@ -102,12 +110,21 @@ const buttons = [
 
 onMounted(() => {
   if (props.square) stencilProps.aspectRatio = 1
-  // if (isPlatform('desktop')) buttons.shift()
+  // console.log(getPlatforms(), 'plataformas')
+  // ["iphone","ios","cordova","capacitor","mobile","hybrid"] plataformas ios
+  // ['android', 'phablet', 'cordova', 'capacitor', 'desktop', 'hybrid'] 'plataformas' android
+  // ['iphone', 'ios', 'mobile', 'mobileweb'] 'platformas' no mac em visualizacao celular ios
+  // if (!isPlatform('cordova')) isCordova = false
 })
 
 watch (props, (n, o) => {
-  if (n.start) showBottomSheet()
+  if (n.start && isCordova) showBottomSheet()
+  if (n.start && !isCordova) document.getElementById("file-upload").click()
 })
+
+const setImage = (e) => {
+  console.log(e, 'resultado fginal aqui')
+}
 
 
 async function showBottomSheet () {

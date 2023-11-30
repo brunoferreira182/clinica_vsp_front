@@ -1,33 +1,7 @@
 <template>
   <ion-page>
-    <!-- <HeaderComponent back="Voltar" :shadow="true" :logo="true" @clk-back="clkBack"/> -->
-    <ion-header class="ion-no-border">
-      <ion-toolbar >
-        <!-- <ion-title>Menu</ion-title> -->
-        <div style="display:flex;align-items: baseline;margin-right: 20px;" @click="$router.back()">
-          <ion-button
-            mode="ios"
-            class="ion-no-padding"
-            color="secondary"
-            fill="clear"
-          >
-            <ion-icon 
-              slot="icon-only" 
-              :icon="chevronBack"
-            />
-          </ion-button>
-          <ion-img 
-            style="margin-right: -10px;height: 40px;width: 75.2px;" 
-            :src="LogoVivian"></ion-img>
-          <ion-text
-            color="secondary"
-            style="translate: -5px -5px;font-family: Montserrat;font-size: 15px;"
-          >
-            Chat
-          </ion-text>
-        </div>
-      </ion-toolbar>
-    </ion-header>
+    <HeaderComponent title="Chat"/>
+
     <ion-content ref="elIonContent" style="--padding-bottom:calc(75px + var(--ion-safe-area-bottom));">
       
       <PhotoHandler
@@ -147,7 +121,7 @@ import {
   IonIcon, 
   IonTextarea, 
   IonContent, 
-  IonButton,
+  IonButton, IonButtons,
   IonRow, IonCol,
   IonFooter,
   IonItem,
