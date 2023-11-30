@@ -9,10 +9,13 @@
       </div>
       <ion-buttons slot="end">
         <ion-button v-if="userInfo.isGuestUser === 0" @click="$router.push('/NewDraftCompanyBody')" >
-          <ion-icon :icon="sparklesOutline" size="large" class="iconStyle animate__animated animate__heartBeat animate__repeat-3"/>
+          <ion-icon :icon="sparklesOutline" size="large" class="iconStyle "/>
         </ion-button>
-        <ion-button v-else-if="userInfo.isGuestUser === 1" @click="$router.push('/guestInfo')" >
-          <ion-icon :icon="sparklesOutline" size="large" class="iconStyle animate__animated animate__heartBeat animate__repeat-3"/>
+        <ion-button v-else-if="userInfo.isGuestUser === 1" @click="$router.push('/guestInfo')">
+          <input class="animation-head" id="toggle-heart" type="checkbox" :checked="sparkleButton"/>
+          <label class="toggle-animation q-pa-sm" for="toggle-heart" aria-label="like">
+            <ion-icon :icon="sparklesOutline" size="large" class="iconStyle"/>
+          </label>
         </ion-button>
         <ion-button @click="$router.push('/notifications')" color="secondary">
             <ion-icon :icon="notificationsOutline" size="large"/>
@@ -135,6 +138,7 @@ export default {
         image: null,
         type: null
       },
+      sparkleButton: true,
       utils,
       userInfo: utils.presentUserInfo(),
       attachmentsAddress: null,
@@ -161,6 +165,7 @@ export default {
   watch: {
     $route(to) {
       if (to.path === '/tabs/home') {
+        this.sparkleButton = true
         if (this.$route.query.postAction !== 'createGuestUser') this.getActiveOpportunitiesFromUser()
       }
     }
@@ -261,7 +266,133 @@ export default {
 }
 </script>
 
-<style scoped>
+<style scoped lang="scss">
+$bubble-d: 4.5rem; // bubble diameter
+$bubble-r: .5*$bubble-d; // bubble-radius
+$sparkle-d: .30rem;
+$sparkle-r: .5*$sparkle-d;
+
+@mixin sparkles($k) {
+	$shadow-list: ();
+	$n-groups: 7;
+	$group-base-angle: 360deg/$n-groups;
+	$group-distr-r: (.6 + $k*.25)*$bubble-r;
+	$n-sparkles: 2;
+	$sparkle-base-angle: 360deg/$n-sparkles;
+	$sparkle-off-angle: 60deg; // offset angle from radius
+	$spread-r: -$k*$sparkle-r;
+	
+	@for $i from 0 to $n-groups {
+		$group-curr-angle: $i*$group-base-angle - 90deg;
+		$xg: $group-distr-r*cos($group-curr-angle);
+		$yg: $group-distr-r*sin($group-curr-angle);
+		
+		@for $j from 0 to $n-sparkles {
+			$sparkle-curr-angle: $group-curr-angle + 
+				$sparkle-off-angle + $j*$sparkle-base-angle;
+			$xs: $xg + $sparkle-d*cos($sparkle-curr-angle);
+			$ys: $yg + $sparkle-d*sin($sparkle-curr-angle);
+			
+			$shadow-list: $shadow-list, $xs $ys 0 $spread-r 
+				// hsl(($i + $j)*$group-base-angle, 100%, 75%);
+		}
+	}
+	
+	box-shadow: $shadow-list;
+}
+
+@mixin bubble($ext) {
+	transform: scale(1);
+	border-color: #cc8ef5;
+	border-width: $ext;
+}
+
+
+.animation-head {
+  position: absolute;
+  left: -100vw;
+  // Defina o estado padrão como checked
+  &:checked + label,
+  &:checked:focus + label {
+    color: #cac7be;
+    filter: none;
+    will-change: font-size;
+    // Adicione infinite à propriedade animation-iteration-count
+    animation: heart 1s cubic-bezier(0, 0, 0, 0) infinite;
+    
+    &:before, &:after {
+      animation: inherit;
+      animation-timing-function: ease-out;
+    }
+    
+    &:before {
+      will-change: transform, border-width, border-color;
+      animation-name: bubble;
+    }
+    
+    &:after {
+      will-change: opacity, box-shadow;
+      animation-name: sparkles;
+    }
+  }
+  
+  &:focus + label {
+    text-shadow: 0 0 3px white, 
+      0 1px 1px white, 0 -1px 1px white, 
+      1px 0 1px white, -1px 0 1px white;
+  }
+}
+
+.toggle-animation {
+	align-self: center;
+	position: relative;
+	color: #888;
+	font-size: 2em;
+	filter: grayscale(1);
+	user-select: none;
+	cursor: pointer;
+	
+	&:before, &:after {
+		position: absolute;
+		z-index: 1;
+		top: 40%; left: 50%;
+		border-radius: 50%;
+		content: '';
+	}
+	
+	// &:before {
+	// 	box-sizing: border-box;
+	// 	margin: -$bubble-r;
+	// 	border: solid $bubble-r #e2264d;
+	// 	width: $bubble-d; height: $bubble-d;
+	// 	transform: scale(0);
+	// }
+	
+	&:after {
+		margin: -$sparkle-r;
+		width: $sparkle-d; height: $sparkle-d;
+		@include sparkles(1);
+	}
+}
+
+// @keyframes heart {
+// 	0%, 17.5% { font-size: 0; }
+// }
+
+@keyframes bubble {
+	15% { @include bubble($bubble-r); }
+	30%, 100% { @include bubble(0); }
+}
+
+@keyframes sparkles {
+	0%, 20% { opacity: 0; }
+	25% {
+		opacity: 1;
+		@include sparkles(0);
+	}
+}
+
+
 .app-name {
   color: var(--ion-color-primary);
   font-family: Noto;
