@@ -1,6 +1,7 @@
 <template>
   <ion-page>
     <ion-content >
+      <div style="height: var(--ion-safe-area-top)"></div>
       <HomeComponent />
     </ion-content>
   </ion-page>

@@ -1,36 +1,11 @@
 <template >
-  <ion-page 
-    :style="isDesktop ?
-    `width: 100%;
-    align-items: center;
-    display: flex;
-    justify-content: center;
-    background-color: #d0ac85;
-    padding: 2vh;` : 
-    'margin-top: var(--ion-safe-area-top)'
-  ">
-    <!-- <div class="tabs-desktop">
-      <ion-button
-        v-for="(tab,i) in tabs"
-        :key="i"
-        @click="clkTab($event,tab)"
-        expand="block"
-        fill="clear"
-        size="large"
-        :color="selectedTab === tab.name ? 'tertiary' : 'secondary'"
-      >
-        <ion-icon slot="start" :src="tab.icon" />
-        <ion-label style="font-family: Montserrat;font-size: 14px;">{{ tab.label }}</ion-label>
-      </ion-button>
-    </div> -->
+  <ion-page :style="styleIonPage">
     <ion-content
       class="content"
-      :scroll-y="false"
       color="primary"
-      :style="isDesktop ? 'max-width: 600px;border-radius:1rem;overflow:hidden;' : ''
-    ">
-      <ion-router-outlet class="ion-router-outlet">
-      </ion-router-outlet>
+      :style="isDesktop ? 'max-width: 600px;border-radius:1rem;overflow:hidden;' : ''"
+    >
+      <ion-router-outlet class="ion-router-outlet"/>
     </ion-content>
   </ion-page>
 </template>
@@ -82,14 +57,30 @@ export default defineComponent({
         // { name: "newDraft", icon: iSuitcase, to: '/NewDraftCompanyBody', label: "ORÇAMENTO" },
       ],
       tabs: [],
-      selectedTab: 'home'
+      selectedTab: 'home',
+      styleIonPage: ''
     };
   },
   beforeMount () {
     const platforms = getPlatforms()
     console.log(platforms, 'platforms')
-    if (platforms.includes('android') || platforms.includes('ios')) this.isDesktop = false
+    if (platforms.includes('cordova')) this.isDesktop = false
     else this.isDesktop = true
+    if (this.isDesktop) {
+      this.styleIonPage = `
+        width: 100%;
+        align-items: center;
+        display: flex;
+        justify-content: center;
+        background-color: #d0ac85;
+        padding: 2vh;
+      `
+    } 
+    // else {
+    //   if (platforms.includes('ios')) {
+    //     this.styleIonPage = 'margin-top: var(--ion-safe-area-top)'
+    //   } else this.styleIonPage = 'margin-top: var(--ion-safe-area-top)'
+    // }
   },
   mounted () {
     this.startView()
@@ -125,9 +116,7 @@ export default defineComponent({
     changeAppBar () {
       if (isPlatform('android')) {
         const styles = getComputedStyle(document.body);
-        console.log(styles.getPropertyValue('--ion-color-background'), 'caraia')
         StatusBar.setStyle({ style: Style.Light });
-
         StatusBar.setBackgroundColor({ color: '#fffcf6' })
       }
     },
@@ -144,19 +133,3 @@ export default defineComponent({
 
 });
 </script>
-
-<style scoped>
-
-.tabs-desktop {
-  display: flex;
-  flex-direction: column;
-  align-items: start;
-  position: absolute;
-  top: 2vh;
-  left: calc(50vw - 500px);
-  background: var(--ion-color-primary);
-  padding: 5px;
-  border-radius: 1rem;
-}
-
-</style>

@@ -1,6 +1,7 @@
 <template>
   <ion-page>
     <ion-content>
+      <div style="height: var(--ion-safe-area-top)"></div>
       <div class="ion-text-center q-mt-xl" v-if="userProfileData">
         <img
           class="profilephoto"

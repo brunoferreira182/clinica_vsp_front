@@ -2,7 +2,11 @@
   <ion-page>
     <ion-content>
       <HeaderComponent title="Pagamento" closeButton="true"/>
-      <p class="q-mx-lg" style="font-weight: 400;font-size: 16px;line-height: 25px;">O próximo passo é escolher como deseja pagar a consulta. Após isso, o encontro será agendado para prosseguir com o orçamento.</p>
+      <p class="q-mx-lg"
+        style="font-weight: 400;font-size: 16px;line-height: 25px;"
+      >
+        O próximo passo é escolher como deseja pagar a consulta. Após isso, o encontro será agendado para prosseguir com o orçamento.
+      </p>
       <p class="q-mx-lg q-mb-lg" style="font-weight: 500;font-size: 18px;margin-top: -5px;color:var(--ion-color-secondary);"><span style="color: var(--ion-color-primary);">Valor da consulta: </span> R${{value}}</p>
       <div v-if="step === 'choosePaymentMethod'">
         <ChoosePaymentMethod

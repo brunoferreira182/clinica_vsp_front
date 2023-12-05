@@ -1,13 +1,32 @@
 <template>
-  <div>
-  <div style="height: 60px;"></div>
+  <ion-header>
+    <ion-toolbar>
+      <ion-buttons slot="start">
+        <ion-button
+          mode="ios"
+          class="ion-no-padding"
+          color="tertiary"
+          shape="round"
+          style="margin-right: auto; height: 40px;width: 40px;"
+          @click="$router.back()"
+        >
+          <ion-icon 
+            style="color: var(--ion-color-secondary);margin-left: -3px;" slot="icon-only" 
+            :icon="chevronBack"
+          />
+        </ion-button>
+      </ion-buttons>
+      <ion-title>{{ title }}</ion-title>
+    </ion-toolbar>
+  </ion-header>
+  <!-- <div>
+  <div style="margin-top: var(--ion-safe-area-top)"></div>
   <ion-content 
     :scroll-y="false"
     :style="
       `height: 60px;
       --background:transparent;
       translate: 0 -60px;
-      position: fixed;
       z-index: 1000;
       box-shadow: ${shadow ? '0 -0px 15px -10px' : 'none'};`"
     >
@@ -88,11 +107,9 @@
           Chat
         </ion-text>
       </div>
-      <!-- <ion-avatar v-if="title" style="margin-right: 10px;"> -->
-      <!-- </ion-avatar> -->
     </div>
   </ion-content>
-  </div>
+  </div> -->
 </template>
 
 <script setup>
@@ -154,16 +171,9 @@ export default {
 };
 </script>
 
-<style>
-ion-badge {
-    --border-radius: 5rem, 5rem, 5rem, 5rem;
-    --color: white;
+<style scoped>
+  ion-toolbar {
+    --background: transparent;
+    --border-width: 0;
   }
-.kids-logo {
-  font-family: Kids;
-  font-weight: auto;
-  font-size: 20px;
-  margin-left: 3px;
-}
-
 </style>

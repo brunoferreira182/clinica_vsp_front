@@ -2,7 +2,7 @@
   <ion-page>
     <ion-content :scroll-y="false">
       <HeaderComponent title="Novo orçamento"/>
-      <h1 class="ion-text-center" style="color: var(--ion-color-secondary); margin-top: -45px;">Novo orçamento</h1>
+      <h1 class="ion-text-center" style="color: var(--ion-color-secondary);">Novo orçamento</h1>
       <div 
         class="ion-text-center q-ma-md q-mb-lg" style="color: var(--ion-color-primary);"> 
         Toque em alguma parte do corpo:

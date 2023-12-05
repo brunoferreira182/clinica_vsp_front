@@ -1,8 +1,9 @@
 <template>
   <ion-page>
-    <HeaderComponent title="Chat"/>
+    
 
     <ion-content ref="elIonContent" style="--padding-bottom:calc(75px + var(--ion-safe-area-bottom));">
+      <HeaderComponent title="Chat"/>
       
       <PhotoHandler
         v-show="startPhotoHandler"
