@@ -65,6 +65,7 @@ export default defineComponent({
     const platforms = getPlatforms()
     console.log(platforms, 'platforms')
     if (platforms.includes('cordova')) this.isDesktop = false
+    else if (platforms.includes('ios') || platforms.includes('android')) this.isDesktop = false
     else this.isDesktop = true
     if (this.isDesktop) {
       this.styleIonPage = `
