@@ -122,10 +122,14 @@ export default defineComponent({
     },
     clkLogin () {
       if (this.loginStep === 'email') {
-        if (!this.emailValidated || this.email === '') {
+        if (!this.emailValidated) {
           utils.toast('Digite um email valido')
           return
+        } else if (this.email === '') {
+          utils.toast('Preencha o email')
+          return
         }
+
         this.checkEmail()
       } else if (this.loginStep === 'password') {
         if (this.password === '') {
