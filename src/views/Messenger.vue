@@ -3,7 +3,7 @@
     <!-- <HeaderComponent
       :templeClub="true"
     /> -->
-    <ion-header class="ion-no-border">
+    <ion-header no-border>
       <ion-toolbar>
         <ion-segment value="chat" @ionChange="changeSlideTo" mode="md">
           <ion-segment-button style="text-transform:none" value="chat">

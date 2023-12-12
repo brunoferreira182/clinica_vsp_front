@@ -22,7 +22,11 @@
         >
           <!-- <ion-icon class="" :src="'.//src/assets/icons/' + tab.icon" /> -->
           <ion-icon :icon="tab.icon"/>
-          <ion-label style="font-family: Montserrat;font-size: 10px;">{{ tab.label }}</ion-label>
+          <ion-label >{{ tab.label }}</ion-label>
+            <template v-if="tab.name === 'messenger'">
+              <div v-if="unreadMessages >= 1" class="unread">{{ unreadMessages }}</div>
+            </template>
+
         </ion-tab-button>
       </ion-tab-bar>
     </ion-tabs>
@@ -54,11 +58,10 @@ import iHouse from '/src/assets/icons/house.svg'
 import iUser from '/src/assets/icons/user.svg'
 import iChat from '/src/assets/icons/chat.svg'
 import iSuitcase from '/src/assets/icons/suitcase.svg'
-
-
 import utils from '../composables/utils'
 import { useBackButton } from '@ionic/vue';
 import { isPlatform } from '@ionic/vue';
+import { useFetch } from '../composables/fetch.js'
 </script>
 <script>
 
@@ -109,7 +112,8 @@ export default {
       },
       userInfo: {},
       selectedTab: 'home',
-      modalShow: false
+      modalShow: false,
+      unreadMessages: 0
     };
   },
   beforeMount () {
@@ -118,27 +122,32 @@ export default {
   },
   watch: {
     $route(to, from) {
+      if (to.path === '/myProfile' || to.path === '/tabs/home'){
+        this.getUnreadMessages()
+      }else if (to.path === '/tabs/messengerChat'){
+        this.setMessageRead()
+        console.log('dslkmsalkmdas');
+      }
       if (to.path !== '/tabs/messengerChat') {
-        this.showTab()
-        if (to.path === '/tabs/home' && to.query.menu) {
-          this.slideTab()
+          this.showTab()
+          if (to.path === '/tabs/home' && to.query.menu) {
+            this.slideTab()
+          }
+          if (to.path === '/tabs/home' && !to.query.menu) {
+            this.slideBackTab()
+          }
+        } else {
+          this.hideTab()
         }
-        if (to.path === '/tabs/home' && !to.query.menu) {
-          this.slideBackTab()
+        if (this.$route.query.updateTabs === 'true') {
+          utils.getUserInfoByToken().then(r => {
+            this.userInfo = r.data
+            if (r.data.isGuestUser === 1) this.tabs = this.tabsGuest
+            else this.tabs = this.tabsUser
+            this.$router.replace(this.$route.path)
+          })
         }
-      } else {
-        this.hideTab()
       }
-      if (this.$route.query.updateTabs === 'true') {
-        utils.getUserInfoByToken().then(r => {
-          this.userInfo = r.data
-          if (r.data.isGuestUser === 1) this.tabs = this.tabsGuest
-          else this.tabs = this.tabsUser
-          this.$router.replace(this.$route.path)
-        })
-      }
-      
-    }
   },
   beforeMount () {
     if (this.$route.query.postAction !== 'createGuestUser') {
@@ -158,6 +167,29 @@ export default {
     
   },
   methods: {
+    setMessageRead(){
+      const opt = {
+        route: '/mobile/messenger/updateMessageRead',
+        body: {
+          userId: this.userInfo.userId,
+        }
+      }
+      const r =  useFetch(opt)
+    },
+    async getUnreadMessages () {
+      const opt = {
+        route: '/mobile/messenger/getUnreadMessages',
+        body: {
+          userId: this.userInfo.userId,
+          name: this.userInfo.name
+        }
+      }
+      const r = await useFetch(opt)      
+      this.unreadMessages = r.data
+      console.log (this.userInfo);
+      console.log (this.unreadMessages, 'respoonse');
+      console.log (r.data, 'respoonse');
+    },
     backButtonManager () {
       useBackButton(9, () => {
         if (this.modalShow) this.modalShow = false
@@ -166,11 +198,6 @@ export default {
     async clkTab (ev,tab) {
       this.selectedTab = tab.name
       this.$router.push(tab.to)
-      // if (tab.name === 'messenger') {
-      //   this.hideTab()
-      // } else {
-      //   this.showTab()
-      // }
     },
     async hideTab() {
       // tabbar
@@ -227,7 +254,6 @@ export default {
     },
     hideModal() {
       this.modalShow = false
-      // this.$refs.modal.$el.dismiss(null, 'cancel');
     },
     clkCard (item) {
       console.log(item)
@@ -450,6 +476,14 @@ export default {
   -webkit-backdrop-filter: blur( 10px)
 
 }
-
-
+.unread-badge {
+  position: absolute;
+  top: 0;
+  right: 0;
+  background-color: red; /* or any other color you prefer */
+  color: white;
+  border-radius: 50%;
+  padding: 2px 6px;
+  font-size: 10px;
+}
 </style>
