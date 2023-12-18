@@ -24,7 +24,10 @@
           <ion-icon :icon="tab.icon"/>
           <ion-label >{{ tab.label }}</ion-label>
             <template v-if="tab.name === 'messenger'">
-              <div v-if="unreadMessages >= 1" class="unread">{{ unreadMessages }}</div>
+              <div class="unread">
+                <ion-badge color= "danger" v-if="unreadMessages >= 1" >{{ unreadMessages }}</ion-badge>
+              </div>
+              <!-- <div v-if="unreadMessages >= 1" class="unread">{{ unreadMessages }}</div> -->
             </template>
 
         </ion-tab-button>
@@ -47,7 +50,7 @@
 
 import {
   IonTabBar, IonTabButton, IonTabs, IonLabel,
-  IonIcon,
+  IonIcon, IonBadge,
   IonPage, IonRouterOutlet,
   IonFab, IonFabButton,
   IonModal, IonContent,
@@ -444,6 +447,12 @@ export default {
 }
 .hidden {
   display: none;
+}
+
+.unread{
+  position: absolute;
+  right: 32px;
+  bottom: 28px;
 }
 
 .slide-left {
