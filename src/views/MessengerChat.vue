@@ -3,7 +3,7 @@
     
 
     <ion-content ref="elIonContent" style="--padding-bottom:calc(75px + var(--ion-safe-area-bottom));">
-      <HeaderComponent title="Chat"/>
+      <HeaderComponent title="Chat" class="chat-header"/>
       
       <PhotoHandler
         v-show="startPhotoHandler"
@@ -156,7 +156,6 @@ export default defineComponent({
       firstTime: true,
       send,
       attach,
-      
       utils,
       isLoading: true,
       dialogDetailMessage: {
@@ -531,6 +530,10 @@ ion-item {
   transition: all 0.1000s ease-in-out;
 }
 
+.chat-header{
+  background-color: rgb(235, 215, 206);
+  position: fixed;
+}
 
 .chat-footer {
   background: linear-gradient(rgba(0,0,0,0) 50%,var(--ion-color-background) 50%);
