@@ -40,6 +40,13 @@ module.exports = {
       textIn: '>Dominique</string>',
       files: [
         '/android/app/src/main/res/values/strings.xml',
+      ]
+    },
+    {
+      type: 'replaceTextInFile',
+      textOut: '>DermaPlanner VSP</string>',
+      textIn: '>Dominique</string>',
+      files: [
         '/ios/App/App/Info.plist'
       ]
     },
