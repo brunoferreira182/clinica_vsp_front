@@ -61,7 +61,7 @@ module.exports = {
     {
       type: 'copyFile',
       to: '/assets/logo.png',
-      fileToCopy: '/dominique/cordova-res/Dominique_Ass_Dourado_02.jpg'
+      fileToCopy: '/dominique/cordova-res/Dominique_Ass_Dourado_02_icone.jpg'
     },
     {
       type: 'copyFile',
