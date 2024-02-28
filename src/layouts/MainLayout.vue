@@ -63,7 +63,7 @@ export default defineComponent({
   },
   beforeMount () {
     const platforms = getPlatforms()
-    console.log(platforms, 'platforms')
+    // console.log(platforms, 'platforms')
     if (platforms.includes('cordova')) this.isDesktop = false
     else if (platforms.includes('ios') || platforms.includes('android')) this.isDesktop = false
     else this.isDesktop = true
@@ -76,7 +76,8 @@ export default defineComponent({
         background-color: #d0ac85;
         padding: 2vh;
       `
-    } 
+    }
+    
     // else {
     //   if (platforms.includes('ios')) {
     //     this.styleIonPage = 'margin-top: var(--ion-safe-area-top)'
@@ -87,6 +88,7 @@ export default defineComponent({
     this.startView()
     utils.fetchIuguId()
     pushService.initPush()
+    utils.getIuguLib()
   },
   watch: {
     $route() {

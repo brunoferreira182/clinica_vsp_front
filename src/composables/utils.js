@@ -32,6 +32,17 @@ const useUtils = {
       window.Iugu = Iugu
     })
   },
+  getIuguLib () {
+    console.log('antes do iugu')
+    const t = document.createElement("script");
+    t.type = "text/javascript"
+    t.src = "https://js.iugu.com/v2"
+    document.body.appendChild(t);
+    t.addEventListener('load', () => {
+      window.Iugu = Iugu
+      console.log(Iugu, 'iugu do caralho')
+    })
+  },
   updateNextRoute: {
     get () { return updateUserInfoOnNextRoute },
     set (val) {
