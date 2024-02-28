@@ -126,7 +126,7 @@ export default {
   watch: {
     $route(to, from) {
       if (to.path === '/myProfile' || to.path === '/tabs/home'){
-        this.getUnreadMessages()
+        // this.getUnreadMessages()
       }else if (to.path === '/tabs/messengerChat'){
         this.setMessageRead()
         console.log('dslkmsalkmdas');
