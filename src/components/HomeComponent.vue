@@ -26,16 +26,6 @@
       </ion-buttons>
     </ion-toolbar>
     <div>
-      <!-- <div class="q-ma-md">
-        <div class="app-name">
-          DermaPlanner<span style="font-size: 11px;"> VSP</span>
-        </div>
-        <ion-menu-toggle>
-          <ion-button @click="$router.push('/notifications')">
-            <ion-icon :icon="notificationsOutline"/>
-          </ion-button>
-        </ion-menu-toggle>
-      </div> -->
       <div
         v-if="activeBudget"
         class="active-budget-button"
@@ -44,11 +34,6 @@
         Você possui um orçamento em andamento.<br> 
         <small> clique aqui para continuar</small>
       </div>
-
-      <!-- <div v-for="(post,i) in 30" :key="i">
-        <div style="height: 200px;">dfsdfassd</div>
-      </div> -->
-
       <div v-for="(post,i) in posts" :key="i">
         <div v-if="i % 2 === 0">
           <div id="post" style="margin: 10px;color: var(--ion-color-primary);background-color: var(--ion-color-tertiary);border-radius: 0.4rem;overflow: hidden;">

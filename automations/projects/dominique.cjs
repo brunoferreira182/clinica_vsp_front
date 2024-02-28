@@ -51,6 +51,14 @@ module.exports = {
       ]
     },
     {
+      type: 'replaceTextInFile',
+      textOut: '<span style="font-size: 11px;"> VSP</span>',
+      textIn: '<span style="font-size: 11px;"> Dominique</span>',
+      files: [
+        '/src/components/HomeComponent.vue'
+      ]
+    },
+    {
       type: 'copyFile',
       to: '/assets/logo.png',
       fileToCopy: '/dominique/cordova-res/Dominique_Ass_Dourado_02.jpg'
